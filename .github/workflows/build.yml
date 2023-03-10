@@ -34,16 +34,15 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NAME: Huhepan
         with:
-          tag_name: v${{ env.VERSION }}
-          release_name: Release ${{ env.VERSION }}
+          tag_name: v${{ env.huhepan }}
+          release_name: Release ${{ env.huhepan }}
           body: |
             ## Changelog
             this should be a changelog
           draft: false
           prerelease: false
-      - name: Set Version
-        run: echo "::set-env name=VERSION::$(node -p "require('./package.json').version")"
 
       - name: Upload Assets
         id: upload-assets
@@ -53,5 +52,5 @@ jobs:
         with:
           upload_url: ${{ steps.publish_release.outputs.upload_url }}
           asset_path: release/*
-          asset_name: Hunhepan-${{ env.VERSION }}-${{ matrix.os }}
+          asset_name: Hunhepan-${{ matrix.os }}
           asset_content_type: application/octet-stream
