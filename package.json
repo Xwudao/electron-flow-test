@@ -15,6 +15,7 @@
     "dev": "vite",
     "build:front": "tsc && vite build",
     "build:electron": "electron-builder",
+    "build:all":"npm run build:front && npm run build:electron",
     "preview": "vite preview",
     "pree2e": "vite build --mode=test",
     "e2e": "playwright test"
